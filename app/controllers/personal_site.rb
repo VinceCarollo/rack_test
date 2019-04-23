@@ -7,11 +7,21 @@ class PersonalSite
       index
     when '/about'
       about
+    when '/myblog'
+      blog
     when '/main.css'
       css
+    when '/vince.jpg'
+      self_pic
+    when /blog\/*/
+      single_blog(env["PATH_INFO"])
     else
       error
     end
+  end
+
+  def self.self_pic
+    render_pic('vince.jpg')
   end
 
   def self.css
@@ -20,6 +30,14 @@ class PersonalSite
 
   def self.index
     render_view('index.html')
+  end
+
+  def self.single_blog(path)
+    render_view(path + ".html")
+  end
+
+  def self.blog
+    render_view('blog.html')
   end
 
   def self.about
@@ -36,5 +54,9 @@ class PersonalSite
 
   def self.render_static(asset)
     [200, {'Content-Type' => 'text/html'}, [File.read("./public/#{asset}")]]
+  end
+
+  def self.render_pic(asset)
+    [200, {'Content-Type' => 'image/jpeg'}, [File.read("./public/images/#{asset}")]]
   end
 end

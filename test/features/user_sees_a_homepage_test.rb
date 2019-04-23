@@ -14,4 +14,10 @@ class HomepageTest < CapybaraTestCase
     assert page.has_content?("Page not found")
     assert_equal 404, page.status_code
   end
+
+  def test_it_can_render_blog
+    visit '/blog/1'
+
+    assert_equal 200, page.status_code
+  end
 end
