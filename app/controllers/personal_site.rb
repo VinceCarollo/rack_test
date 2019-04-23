@@ -57,6 +57,6 @@ class PersonalSite
   end
 
   def self.render_pic(asset)
-    [200, {'Content-Type' => 'image/jpeg'}, [File.read("./public/images/#{asset}")]]
+    [200, {'Content-Type' => 'image/jpeg'}, [File.read("./app/images/#{asset}")]]
   end
 end
