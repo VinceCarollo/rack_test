@@ -11,7 +11,7 @@ class PersonalSite
       blog
     when '/main.css'
       css
-    when '/vince.JPG'
+    when '/vince.jpg'
       self_pic
     when /blog\/*/
       single_blog(env["PATH_INFO"])
